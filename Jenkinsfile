@@ -11,6 +11,7 @@ def worker=1
 //   ...
 // }
 //def mvnHome = tool 'Maven'
+def branchName= ${GIT_BRANCH}
 
 pipeline {
   agent any
@@ -22,7 +23,20 @@ pipeline {
    stage('DEV') {
 
 
-  //    when { branch '${branchName}' }
+  //    when { branch 'dev' }
+   steps{
+      // Run the maven build
+    // echo 'Pulling...' + env.BRANCH_NAME
+       echo "${GIT_BRANCH}"
+         bat 'mvn clean test'
+    
+	      bat 'mvn clean install -DskipTests=true'
+	  }
+	  }  
+	   stage('DEV') {
+
+
+  //    when { branch 'master' }
    steps{
       // Run the maven build
     // echo 'Pulling...' + env.BRANCH_NAME
