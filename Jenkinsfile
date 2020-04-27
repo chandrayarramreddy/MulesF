@@ -6,7 +6,7 @@ def bussgrp="Speridian"
 def uri="https://anypoint.mulesoft.com"
 def worktype="MICRO"
 def worker=1
-def branchName = "${env.BRANCH_NAME}"
+//def branchName = "${env.BRANCH_NAME}"
 // if(branchName == 'dev'){
 //   ...
 // }
