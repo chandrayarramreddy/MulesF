@@ -26,7 +26,7 @@ pipeline {
    steps{
       // Run the maven build
     // echo 'Pulling...' + env.BRANCH_NAME
-       echo 'Pulling... ' + env.GIT_BRANCH
+       echo 'Pulling... ' + ${env.BRANCH}
          bat 'mvn clean test'
     
 	      bat 'mvn clean install -DskipTests=true'
