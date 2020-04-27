@@ -25,7 +25,7 @@ pipeline {
   //    when { branch '${branchName}' }
    steps{
       // Run the maven build
-     echo 'Pulling...' + env.BRANCH_NAME
+    // echo 'Pulling...' + env.BRANCH_NAME
        echo 'Pulling... ' + env.GIT_BRANCH
          bat 'mvn clean test'
     
