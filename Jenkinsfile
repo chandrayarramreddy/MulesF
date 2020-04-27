@@ -33,7 +33,7 @@ pipeline {
 	      bat 'mvn clean install -DskipTests=true'
 	  }
 	  }  
-	   stage('Master') {
+	   stage('master') {
 
 
   //    when { branch 'master' }
