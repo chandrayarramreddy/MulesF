@@ -109,7 +109,7 @@ pipeline {
         ANYPOINT_CREDENTIALS = credentials('muleapi')
       }
       steps {
-	  echo "Deploying Application to SIT"
+	  echo "Deploying Application to SIT    "
     //  bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=SIT -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
