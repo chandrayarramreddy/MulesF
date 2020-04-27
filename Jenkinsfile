@@ -1,12 +1,10 @@
 //Variables Declaration
 
 def muleversion="4.2.2"
-//def env="PROD"
 def bussgrp="Speridian"
 def uri="https://anypoint.mulesoft.com"
 def worktype="MICRO"
 def worker=1
-//def mvnHome = tool 'Maven'
 
 pipeline {
   agent any
@@ -15,27 +13,27 @@ pipeline {
         }
   stages {
  
-   stage('Build') {
-  // echo "Building DEV Environment"
+   stage('DEV Build') {
+ 
     when { branch 'dev' }
    steps{
       // Run the maven build
-    echo "Working D Build"
-       //  bat 'mvn clean test'    
+    echo "Building the Test"
+    bat 'mvn clean test'    
 	  }
 	  }  
 	  
-    stage('Install') {
-	//echo "Building DEV Environment"
+    stage('DEV Install') {
+	
 	 when { branch 'dev' }
       steps {
-       echo "Working D Install"
-       //  bat 'mvn clean install -DskipTests=true'
+       echo "Installing"
+       bat 'mvn clean install -DskipTests=true'
     
       }
     }
-    stage('Deploy') {
-	//echo "Building DEV Environment"
+    stage('DEV Deploy') {
+	
 	 when { branch 'dev' }
 	
 	//Anypoint Platform Credentails
@@ -43,47 +41,114 @@ pipeline {
         ANYPOINT_CREDENTIALS = credentials('muleapi')
       }
       steps {
-	  echo "Working D Deploy"
-        // bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=${env} -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+	  echo "Deploying Application to Anypoint"
+        // bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=DEV -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
      }
 	 
-	  stage('MBuild') {
- //  echo "Building DEV Environment"
-    when { branch 'master' }
+	  stage('QA Build') {
+ 
+    when { branch 'QA' }
    steps{
       // Run the maven build
-    echo "Working M Build"
-       //  bat 'mvn clean test'    
+    echo "Building the Test"
+    bat 'mvn clean test'    
 	  }
 	  }  
 	  
-    stage('MInstall') {
-	//echo "Building DEV Environment"
-	 when { branch 'master' }
+    stage('QA Install') {
+
+	 when { branch 'QA' }
       steps {
-       echo "Working M Install"
-        // bat 'mvn clean install -DskipTests=true'
+       echo "Installing"
+       bat 'mvn clean install -DskipTests=true'
     
       }
     }
-    stage('MDeploy') {
-	//echo "Building DEV Environment"
-	 when { branch 'master' }
+    stage('QA Deploy') {
+	
+	 when { branch 'QA' }
 	
 	//Anypoint Platform Credentails
 	 environment {
         ANYPOINT_CREDENTIALS = credentials('muleapi')
       }
       steps {
-	  echo "Working M Deploy"
-        // bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=${env} -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+	  echo "Deploying Application to QA"
+      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=QA -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
      }
 	 
+	  stage('SIT Build') {
+ 
+    when { branch 'SIT' }
+   steps{
+      // Run the maven build
+    echo "Building the Test"
+    bat 'mvn clean test'    
+	  }
+	  }  
+	  
+    stage('SIT Install') {
+
+	 when { branch 'SIT' }
+      steps {
+       echo "Installing"
+       bat 'mvn clean install -DskipTests=true'
+    
+      }
+    }
+    stage('SIT Deploy') {
+	
+	 when { branch 'SIT' }
+	
+	//Anypoint Platform Credentails
+	 environment {
+        ANYPOINT_CREDENTIALS = credentials('muleapi')
+      }
+      steps {
+	  echo "Deploying Application to SIT"
+      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=SIT -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+   
+       }   
+     }	 
 	 
+	 
+	 stage('PROD Build') {
+ 
+    when { branch 'PROD' }
+   steps{
+      // Run the maven build
+    echo "Building the Test"
+    bat 'mvn clean test'    
+	  }
+	  }  
+	  
+    stage('PROD Install') {
+
+	 when { branch 'PROD' }
+      steps {
+       echo "Installing"
+       bat 'mvn clean install -DskipTests=true'
+    
+      }
+    }
+    stage('PROD Deploy') {
+	
+	 when { branch 'PROD' }
+	
+	//Anypoint Platform Credentails
+	 environment {
+        ANYPOINT_CREDENTIALS = credentials('muleapi')
+      }
+      steps {
+	  echo "Deploying Application to PROD"
+      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=PROD -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+   
+       }   
+     }	 
 	 
 	 
 	 
