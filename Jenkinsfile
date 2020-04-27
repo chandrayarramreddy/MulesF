@@ -121,7 +121,7 @@ pipeline {
     when { branch 'PROD' }
    steps{
       // Run the maven build
-    echo "Building the PROD"
+    echo "Building the PROD   "
    // bat 'mvn clean test'    
 	  }
 	  }  
