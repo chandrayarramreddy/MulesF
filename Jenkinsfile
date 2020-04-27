@@ -18,8 +18,8 @@ pipeline {
     when { branch 'dev' }
    steps{
       // Run the maven build
-    echo "Building the Test"
-    bat 'mvn clean test'    
+    echo "Building the DEV"
+  //  bat 'mvn clean test'    
 	  }
 	  }  
 	  
@@ -27,8 +27,8 @@ pipeline {
 	
 	 when { branch 'dev' }
       steps {
-       echo "Installing"
-       bat 'mvn clean install -DskipTests=true'
+       echo "DEV Installing"
+      // bat 'mvn clean install -DskipTests=true'
     
       }
     }
@@ -41,7 +41,7 @@ pipeline {
         ANYPOINT_CREDENTIALS = credentials('muleapi')
       }
       steps {
-	  echo "Deploying Application to Anypoint"
+	  echo "DEV Deploying Application to Anypoint"
         // bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=DEV -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
@@ -52,8 +52,8 @@ pipeline {
     when { branch 'QA' }
    steps{
       // Run the maven build
-    echo "Building the Test"
-    bat 'mvn clean test'    
+    echo "QA Building the Test"
+   // bat 'mvn clean test'    
 	  }
 	  }  
 	  
@@ -61,8 +61,8 @@ pipeline {
 
 	 when { branch 'QA' }
       steps {
-       echo "Installing"
-       bat 'mvn clean install -DskipTests=true'
+       echo "QA Installing"
+    //   bat 'mvn clean install -DskipTests=true'
     
       }
     }
@@ -76,7 +76,7 @@ pipeline {
       }
       steps {
 	  echo "Deploying Application to QA"
-      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=QA -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+    //  bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=QA -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
      }
@@ -86,8 +86,8 @@ pipeline {
     when { branch 'SIT' }
    steps{
       // Run the maven build
-    echo "Building the Test"
-    bat 'mvn clean test'    
+    echo "Building the SIT"
+   // bat 'mvn clean test'    
 	  }
 	  }  
 	  
@@ -95,8 +95,8 @@ pipeline {
 
 	 when { branch 'SIT' }
       steps {
-       echo "Installing"
-       bat 'mvn clean install -DskipTests=true'
+       echo "SIT Installing"
+     //  bat 'mvn clean install -DskipTests=true'
     
       }
     }
@@ -110,7 +110,7 @@ pipeline {
       }
       steps {
 	  echo "Deploying Application to SIT"
-      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=SIT -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+    //  bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=SIT -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
      }	 
@@ -121,8 +121,8 @@ pipeline {
     when { branch 'PROD' }
    steps{
       // Run the maven build
-    echo "Building the Test"
-    bat 'mvn clean test'    
+    echo "Building the PROD"
+   // bat 'mvn clean test'    
 	  }
 	  }  
 	  
@@ -130,8 +130,8 @@ pipeline {
 
 	 when { branch 'PROD' }
       steps {
-       echo "Installing"
-       bat 'mvn clean install -DskipTests=true'
+       echo "PROD Installing"
+     //  bat 'mvn clean install -DskipTests=true'
     
       }
     }
@@ -145,7 +145,7 @@ pipeline {
       }
       steps {
 	  echo "Deploying Application to PROD"
-      bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=PROD -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
+    //  bat "mvn package deploy -Dmuleversion=${muleversion} -Dusername=${ANYPOINT_CREDENTIALS_USR} -Dpassword=${ANYPOINT_CREDENTIALS_PSW} -Denv=PROD -Dbussgrp='${bussgrp}' -Duri=${uri} -Dworktype=${worktype} -Dworker=${worker} -DmuleDeploy"
    
        }   
      }	 
