@@ -11,7 +11,7 @@ def worker=1
 //   ...
 // }
 //def mvnHome = tool 'Maven'
-def branchName= ${GIT_BRANCH}
+def branchName= "${GIT_BRANCH}"
 
 pipeline {
   agent any
@@ -23,7 +23,7 @@ pipeline {
    stage('DEV') {
 
 
-  //    when { branch 'dev' }
+      when { branch 'dev' }
    steps{
       // Run the maven build
     // echo 'Pulling...' + env.BRANCH_NAME
@@ -36,7 +36,7 @@ pipeline {
 	   stage('Master') {
 
 
-  //    when { branch 'master' }
+      when { branch 'master' }
    steps{
       // Run the maven build
     // echo 'Pulling...' + env.BRANCH_NAME
