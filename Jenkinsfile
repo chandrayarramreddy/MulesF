@@ -20,8 +20,10 @@ pipeline {
   stages {
  
    stage('DEV') {
-   if(branchName == 'dev'){
 
+       echo 'Pulling...' + env.BRANCH_NAME
+       echo 'Pulling... ' + env.GIT_BRANCH
+      when { branch '${branchName}' }
    steps{
       // Run the maven build
     
@@ -29,9 +31,7 @@ pipeline {
     
 	      bat 'mvn clean install -DskipTests=true'
 	  }
-	  } 
-	  
+	  }  
 	  
       }
-  }
   }
