@@ -16,7 +16,7 @@ pipeline {
   stages {
  
    stage('Build') {
-   echo "Building DEV Environment"
+  // echo "Building DEV Environment"
     when { branch 'dev' }
    steps{
       // Run the maven build
@@ -26,7 +26,7 @@ pipeline {
 	  }  
 	  
     stage('Install') {
-	echo "Building DEV Environment"
+	//echo "Building DEV Environment"
 	 when { branch 'dev' }
       steps {
        echo "Working D Install"
@@ -35,7 +35,7 @@ pipeline {
       }
     }
     stage('Deploy') {
-	echo "Building DEV Environment"
+	//echo "Building DEV Environment"
 	 when { branch 'dev' }
 	
 	//Anypoint Platform Credentails
@@ -50,7 +50,7 @@ pipeline {
      }
 	 
 	  stage('MBuild') {
-   Echo "Building DEV Environment"
+   echo "Building DEV Environment"
     when { branch 'master' }
    steps{
       // Run the maven build
@@ -69,7 +69,7 @@ pipeline {
       }
     }
     stage('MDeploy') {
-	Echo "Building DEV Environment"
+	echo "Building DEV Environment"
 	 when { branch 'master' }
 	
 	//Anypoint Platform Credentails
