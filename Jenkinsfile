@@ -11,7 +11,7 @@ def worker=1
 //   ...
 // }
 //def mvnHome = tool 'Maven'
-def branchName= "${GIT_BRANCH}"
+//def branchName= "${GIT_BRANCH}"
 
 pipeline {
   agent any
