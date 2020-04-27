@@ -18,7 +18,7 @@ pipeline {
     when { branch 'dev' }
    steps{
       // Run the maven build
-    echo "Building the DEV"
+    echo "Building the DEV   "
   //  bat 'mvn clean test'    
 	  }
 	  }  
