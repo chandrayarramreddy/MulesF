@@ -19,11 +19,11 @@ pipeline {
         maven 'Maven'
         }
   stages {
- 
+  when { branch 'dev' }
    stage('DEV') {
 
 
-      when { branch 'dev' }
+     
    steps{
       // Run the maven build
     // echo 'Pulling...' + env.BRANCH_NAME
