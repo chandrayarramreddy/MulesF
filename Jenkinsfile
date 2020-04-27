@@ -20,7 +20,8 @@ pipeline {
   stages {
  
    stage('DEV') {
-      when { branch '${branchName}' }
+   if(branchName == 'dev'){
+
    steps{
       // Run the maven build
     
@@ -28,7 +29,9 @@ pipeline {
     
 	      bat 'mvn clean install -DskipTests=true'
 	  }
-	  }  
+	  } 
+	  
 	  
       }
+  }
   }
