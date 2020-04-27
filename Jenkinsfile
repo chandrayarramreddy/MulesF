@@ -21,8 +21,7 @@ pipeline {
  
    stage('DEV') {
 
-       echo 'Pulling...' + env.BRANCH_NAME
-       echo 'Pulling... ' + env.GIT_BRANCH
+
   //    when { branch '${branchName}' }
    steps{
       // Run the maven build
