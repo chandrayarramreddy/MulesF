@@ -27,7 +27,7 @@ pipeline {
 	
 	 when { branch 'dev' }
       steps {
-       echo "DEV Installing"
+       echo "DEV Installing   123455"
       // bat 'mvn clean install -DskipTests=true'
     
       }
